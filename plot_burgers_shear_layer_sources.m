@@ -1,5 +1,5 @@
 %% Burgers stretching shear layer: source-term distributions
-% Output: figures/shear_layer_sources.pdf
+% Output: ./shear_layer_sources.pdf
 
 clear; clc; close all;
 
@@ -11,11 +11,6 @@ set(0,'defaultTextFontName', 'Times New Roman');
 set(0,'defaultAxesFontName', 'Times New Roman');
 set(0,'defaulttextfontsize',16);
 set(0,'DefaultLineMarkerSize',9);
-
-outDir = 'figures';
-if ~exist(outDir, 'dir')
-    mkdir(outDir);
-end
 
 %% --------------------------- parameters -------------------------------
 Uinf  = 1.0;
@@ -109,5 +104,5 @@ legend({'$4\mathrm{D}Q/\mathrm{D}t$','$-6\det(\mathbf{S})$', ...
        'Interpreter','latex','NumColumns',2,'Location','northoutside');
 text(0.01,0.90,'$(c)$','Units','normalized','Interpreter','latex','FontSize',18);
 
-exportgraphics(gcf, fullfile(outDir,'shear_layer_sources.pdf'),'ContentType','vector');
-disp('Done: figures/shear_layer_sources.pdf');
+exportgraphics(gcf, 'shear_layer_sources.pdf','ContentType','vector');
+disp('Done: ./shear_layer_sources.pdf');

@@ -1,5 +1,5 @@
 %% Burgers vortex: source-term distributions
-% Output: figures/burgers_vortex_sources.pdf
+% Output: ./burgers_vortex_sources.pdf
 
 clear; clc; close all;
 
@@ -11,11 +11,6 @@ set(0,'defaultTextFontName', 'Times New Roman');
 set(0,'defaultAxesFontName', 'Times New Roman');
 set(0,'defaulttextfontsize',16);
 set(0,'DefaultLineMarkerSize',9);
-
-outDir = 'figures';
-if ~exist(outDir, 'dir')
-    mkdir(outDir);
-end
 
 %% --------------------------- parameters -------------------------------
 sigma = 1.0;
@@ -120,5 +115,5 @@ legend({'$4\mathrm{D}Q/\mathrm{D}t$','$-6\det(\mathbf{S})$', ...
        'Interpreter','latex','NumColumns',2,'Location','northoutside');
 text(0.01,0.90,'$(c)$','Units','normalized','Interpreter','latex','FontSize',18);
 
-exportgraphics(gcf, fullfile(outDir,'burgers_vortex_sources.pdf'),'ContentType','vector');
-disp('Done: figures/burgers_vortex_sources.pdf');
+exportgraphics(gcf, 'burgers_vortex_sources.pdf','ContentType','vector');
+disp('Done: ./burgers_vortex_sources.pdf');

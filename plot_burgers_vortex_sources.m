@@ -29,11 +29,19 @@ dUr = 0.05;  dUt = 0.04;  dUz = 0.00; %#ok<NASGU>
 
 %% ------------------------- vortex fields ------------------------------
 % dense uniform grid for high-order finite difference
-rMin = 1e-4*sigma;
+% r = 0 is singular in cylindrical coordinates; start from a small positive
+% radius r0 = eps_r*sigma instead of 0.
+eps_r = 1e-3;
+r0 = eps_r*sigma;
 rMax = 6.0*sigma;
 N = 6001;
-r = linspace(rMin, rMax, N).';
+r = linspace(r0, rMax, N).';
 xi = r/sigma;
+
+% Optional sanity check
+if r(1) <= 0
+    error('Radial grid must start from a positive value to avoid r=0 singularity.');
+end
 
 % Base velocity components (v_r, v_theta, v_z) in cylindrical coordinates
 vr = -0.5*k*r;
